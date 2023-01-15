@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, render_template, url_for, Response
-import cv2
+
 app = Flask(__name__)
         
 @app.route("/")
