@@ -4,10 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloudtype Flask Sample Page</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Cloudtype Flask Sample Page - Main Branch</h1>
-    <h1>배포 가능</h1>
+    <form action="/applyPoto" method="get">
+        <input type="text" name="location">
+        <input type="text" name="clean">
+        <input type="submit" value="제출">
+    </form>
+
+    <form action="{{url_for('upload_img')}}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="files">
+        <input type="submit">
+    </form>
+    <p>
+        <img src={{url_for("static", filename = photo)}} alt="">
+    </p>
+    <p>
+        ddd
+        {{ getDatas }}
+    </p>
+    <p>
+        <div>
+
+            <img src="{{ url_for('video') }}" width="50%"/>
+        </div>
+    </p>
 </body>
 </html>
