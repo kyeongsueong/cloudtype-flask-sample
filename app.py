@@ -4,4 +4,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template('./index.html')
+    getDatas = "hihi"
+    photo = f"/img/1.jpeg"
+    return render_template('./index.html', getDatas=getDatas, photo=photo)
