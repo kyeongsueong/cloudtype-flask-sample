@@ -13,5 +13,4 @@ def index():
 def handleMessage(msg):
     send(msg, broadcast = True)
 
-socketio.run(app)
 
