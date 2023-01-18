@@ -34,14 +34,9 @@ def generate_frames():
 
 @app.route('/')
 def index():
-    getDatas = "hihi"
-    photo = f"/img/1.jpeg"
-    photo2 = f"/img/2.jpeg"
     return render_template("chat.html")
-
 @socketio.on('message')
 def handleMessage(msg):
-    print('Message: ' + msg)
     send(msg, broadcast = True)
 
 @app.route('/applyPoto')
@@ -66,9 +61,5 @@ def send_img():
 
         print(lolo)
         return Response(img_frames(lolo),mimetype='multipart/x-mixed-replace; boundary=frame')
-
-#@app.route('/video')
-#def video():
-#    return Response(generate_frames(),mimetype='multipart/x-mixed-replace; boundary=frame')
 socketio.run(app)
-#app.run(debug=True)
+
