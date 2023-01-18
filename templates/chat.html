@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+  <body>
+
+    <ul id="messages"></ul>
+    <input id="myMessage" type="text">
+    <button id="send">Send</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
+  <script>
+    const socket = io('https://port-0-cloudtype-flask-sample-4ev8n82hlcxi3nsu.gksl2.cloudtype.app/')
+
+
+    socket.emit('message', 'hello')
+
+    socket.on('message', function(msg) {
+        let newLi = document.createElement("li");
+        let newContent = document.createTextNode(msg);
+        newLi.appendChild(newContent);
+        document.getElementById('messages').appendChild(newLi);
+    })
+
+    document.getElementById('send').addEventListener('click', function() {
+      socket.send(document.getElementById('myMessage').value);
+      document.getElementById('myMessage').value = '';
+    })
+  </script>
+</body>
+</html>
