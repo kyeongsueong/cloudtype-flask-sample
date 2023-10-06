@@ -1,34 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="ko">
+<head>
     <meta charset="UTF-8">
-    <title></title>
-  </head>
-  <body>
-
-    <ul id="messages"></ul>
-    <input id="myMessage" type="text">
-    <button id="send">Send</button>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
-  <script>
-    const socket = io('https://port-0-cloudtype-flask-sample-4ev8n82hlcxi3nsu.gksl2.cloudtype.app')
-
-
-    socket.emit('message', 'hello')
-
-    socket.on('message', function(msg) {
-        let newLi = document.createElement("li");
-        let newContent = document.createTextNode(msg);
-        newLi.appendChild(newContent);
-        document.getElementById('messages').appendChild(newLi);
-    })
-
-    document.getElementById('send').addEventListener('click', function() {
-      socket.send(document.getElementById('myMessage').value);
-      document.getElementById('myMessage').value = '';
-    })
-  </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안전순찰</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        form {
+            margin: 20px auto;
+            max-width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        h2 {
+            font-size: 18px;
+        }
+        p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>안전순찰 매뉴얼</h1>
+    <form method="POST">
+        <label for="user_input">메시지를 입력하세요:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <input type="submit" value="전송">
+    </form>
+    <h2>안전순찰 매뉴얼 AI :</h2>
+    <p>{{ response }}</p>
 </body>
 </html>
