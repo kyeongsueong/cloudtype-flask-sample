@@ -10,5 +10,4 @@ setuptools==65.6.3 ; python_version >= '3.7'
 werkzeug==2.2.2 ; python_version >= '3.7'
 zipp==3.11.0 ; python_version >= '3.7'
 opencv-python>=4.5.3.56
-flask-socketio >= 4.5.4
 embedchain
